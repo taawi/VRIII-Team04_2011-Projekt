@@ -13,10 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.entity.RooEntity;
@@ -44,32 +40,34 @@ public class Intsident implements Serializable {
 	private Date avatud;
 
 	@Column(name="GPS_LATITUUD")
+<<<<<<< OURS
 	@DecimalMax("90.0")
 	@DecimalMin("0.0")
+	@NotNull
+=======
+>>>>>>> THEIRS
 	private BigDecimal gpsLatituud;
 
 	@Column(name="GPS_LONGITUUD")
+<<<<<<< OURS
 	@DecimalMax("180.0")
 	@DecimalMin("0.0")
+	@NotNull
+=======
+>>>>>>> THEIRS
 	private BigDecimal gpsLongituud;
 
-	@Size(min = 1, max = 150)
-	@NotNull
 	private String kirjeldus;
 
 	private String kommentaar;
 
-	@Size(min = 1, max = 20)
-	@NotNull
 	private String kood;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private Date muudetud;
 
 	private String muutja;
-	
-	@Size(min = 1, max = 100)
-	@NotNull
+
 	private String nimetus;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -79,24 +77,20 @@ public class Intsident implements Serializable {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name="TOIMUMISE_ALGUS")
-    @NotNull
 	private Date toimumiseAlgus;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	@Column(name="TOIMUMISE_LOPP")
-    @NotNull
 	private Date toimumiseLopp;
 
 	//bi-directional many-to-one association to IntsidendiLiik
     @ManyToOne
 	@JoinColumn(name="INTSIDENDI_LIIK_ID")
-    @NotNull
 	private IntsidendiLiik intsidendiLiik;
 
 	//bi-directional many-to-one association to Piiriloik
     @ManyToOne
 	@JoinColumn(name="PIIRILOIK_ID")
-    @NotNull
 	private Piiriloik piiriloik;
 
 	//bi-directional many-to-one association to IsikIntsidendi
